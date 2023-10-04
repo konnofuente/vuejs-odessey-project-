@@ -55,31 +55,86 @@
 
 
 
-const app = Vue.createApp({
+// const app = Vue.createApp({
 
+//     data() {
+//         return {
+//             isPurple:false,
+//             textColor:' ',
+//             size:150,
+//             showCircle :true,
+
+            
+//         }
+//     },
+
+//     methods: {
+//         checkColor(){
+//             this.isPurple = true
+//         }
+//     },
+
+//     computed:{
+//         circle_class(){
+//             return {purple : this.isPurple}
+//         },
+//         circle_size(){
+//             return {width:this.size + 'px' , height:this.size + 'px'}
+//         }
+
+
+//     }
+// }).mount('#circle')
+
+
+// const app = Vue.createApp({
+//     data() {
+//         return {
+//             birds: ['Pigeons', 'Eagles', 'Doves', 'Parrots'],
+//             people: [
+//                 { name: 'John', age: 20 },
+//                 { name: 'Rick', age: 18 },
+//                 { name: 'Amy', age: 33 }
+//             ]
+//         }
+//     },
+// }).mount('#listing')
+
+
+let vm = Vue.createApp({
     data() {
-        return {
-            isPurple:false,
-            textColor:' ',
-            size:150,
-            showCircle :true,
-        }
+      return {
+        people: [
+          {
+            name: 'John',
+            message: 'Hello world!'
+          },
+          {
+            name: 'Rick',
+            message: 'I like pie.'
+          },
+          {
+            name: 'Amy',
+            message: 'Skydiving is fun!'
+          }
+        ]
+      }
     },
-
     methods: {
-        checkColor(){
-            this.isPurple = true
-        }
+        move(){
+            // return this.people = this.people.reverse()
+            const first = this.people.shift()
+            this.people.push(first)
+        },
+    updateName(index , event){
+      this.people[index] = {...this.people[index], name: event.target.value};
+    }
+    
+     
     },
 
-    computed:{
-        circle_class(){
-            return {purple : this.isPurple}
-        },
-        circle_size(){
-            return {width:this.size + 'px' , height:this.size + 'px'}
-        }
-
-
-    }
-}).mount('#circle')
+   computed: {
+   },
+   
+  }).mount('#name')
+  
