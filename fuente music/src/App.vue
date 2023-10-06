@@ -277,7 +277,7 @@
       </div>
 
       <!-- Auth Modal -->
-      <app-auth/>
+      <app-auth></app-auth>
     </body>
   </div>
 </template>
@@ -286,7 +286,7 @@
 import AppAuth from './components/AppAuth.vue';
 import AppHeader from './components/AppHeader.vue';
 export default {
-  components: { AppHeader },
+  components: { AppHeader, AppAuth },
   name:'App',
   component:{
     AppHeader,

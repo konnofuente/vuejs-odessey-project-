@@ -28,7 +28,7 @@
 </template>
 
 <script >
-import {mapStores , mapState , mapWritableState} from 'pinia'
+import {mapStores , mapWritableState} from 'pinia'
 import useModelStore from '../stores/model'
 
   export default{
