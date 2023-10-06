@@ -10,7 +10,11 @@
             <ul class="flex flex-row mt-1">
               <!-- Navigation Links -->
               <li>
-                <a class="px-2 text-white" href="#">Login / Register</a>
+                <a 
+                class="px-2 text-white" 
+                href="#"
+                @click.prevent="toggleAuthModel"
+                >Login / Register</a>
               </li>
               <li>
                 <a class="px-2 text-white" href="#">Manage</a>
@@ -24,7 +28,25 @@
 </template>
 
 <script >
+import {mapStores , mapState , mapWritableState} from 'pinia'
+import useModelStore from '../stores/model'
+
   export default{
-    name:'AppHeader'
+    name:'AppHeader',
+    computed:{
+      ...mapStores(useModelStore),
+      ...mapWritableState(useModelStore,["isOpen"])
+    },
+    methods:{
+      toggleAuthModel(){
+        this.modelStore.isOpen = !this.modelStore.isOpen
+        console.log(this.modelStore.isOpen)
+
+        // this.isOpen = !this.isOpen
+        // console.log(this.isOpen)
+
+
+      }
+    }
   }
 </script>
