@@ -1,14 +1,16 @@
 <template>
-  <div>
 
+  <div>
+ 
     <body class="bg-gray-100 font-sans pb-24">
       <!-- Header -->
       <app-header></app-header>
+
       <!-- Introduction -->
       <section class="mb-8 py-20 text-white text-center relative">
         <div
           class="absolute inset-0 w-full h-full bg-contain introduction-bg"
-          style="background-image: url(assets/img/header.png)"
+          style="background-image: url(./assets/img/header.png)"
         ></div>
         <div class="container mx-auto">
           <div class="text-white main-header-content">
