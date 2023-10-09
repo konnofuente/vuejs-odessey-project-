@@ -3,7 +3,7 @@ import './assets/base.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import VeeValidatePlugin from './includes/validation'
+import VeeValidatePlugin from './components/module/auth/utils/validation'
 
 import App from './App.vue'
 import router from './router'

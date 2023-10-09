@@ -29,7 +29,7 @@
 
 <script >
 import {mapStores , mapWritableState} from 'pinia'
-import useModelStore from '../stores/model'
+import useModelStore from '../../../stores/model'
 
   export default{
     name:'AppHeader',
