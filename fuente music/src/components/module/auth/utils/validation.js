@@ -1,6 +1,6 @@
 
 import {Form as VeeForm ,configure, Field as VeeField , defineRule,ErrorMessage} from 'vee-validate';
-import {required , not_one_of as excluded , confirmed ,max ,min , alpha_spaces as alphaSpaces,email , min_value as minVal , max_value as maxVal} from '@vee-validate/rules';
+import {required , not_one_of as excluded , confirmed ,max ,min , email , min_value as minVal , max_value as maxVal} from '@vee-validate/rules';
 export default {
     install(app){
         app.component("VeeForm",VeeForm)
@@ -17,7 +17,7 @@ export default {
         defineRule('passwords_mismatch',confirmed)
         defineRule('excluded',excluded)
         defineRule('country_excluded',excluded)
-        defineRule('alpha_spaces',alphaSpaces)
+        // defineRule('alpha_spaces',alphaSpaces)
 
 
         configure({
