@@ -77,7 +77,7 @@ import { mapState, mapWritableState } from 'pinia'
 import useModelStore from '../../../stores/model'
 import LoginForm from './LoginForm.vue'
 import RegisterForm from './RegisterForm.vue'
-import './utils/validation'
+import '../../../utils/validation'
 
 export default {
   name: 'AppAuth',

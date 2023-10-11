@@ -8,6 +8,8 @@ export default {
         app.component("ErrorMessage",ErrorMessage)
 
         defineRule('required',required)
+        defineRule('song_title',required)
+        defineRule('song_genre',required)
         defineRule('tos',required)
         defineRule('email',email)
         defineRule('min',min)
@@ -26,6 +28,7 @@ export default {
                     required:`the field ${ctx.field} is required`,
                     min:`The field ${ctx.field} is to short`,
                     max:`The field ${ctx.field} is to long`,
+                    song_title:`The song title is to required`,
                     email:`The field ${ctx.field} must be a valide email`,
                     alpha_spaces:`The field ${ctx.field} may only contain alphabetical characters`,
                     country_excluded:`The country dont not have access to our service please `,

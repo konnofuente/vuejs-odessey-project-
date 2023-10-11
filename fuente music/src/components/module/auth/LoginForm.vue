@@ -49,7 +49,7 @@
 <script>
 
 import { ErrorMessage } from 'vee-validate'
-import './utils/validation'
+import '../../../utils/validation'
 import { mapActions } from 'pinia'
 import useUserStore from '../../../stores/user'
 
