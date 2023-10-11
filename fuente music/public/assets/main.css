@@ -52,6 +52,16 @@ input[type="file"]{
   margin-top: 20px;
 }
 
+button {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+button:hover {
+  opacity: 0.5;
+}
+
+
 .progress-bar {
   background-size: 1rem 1rem;
   background-image: linear-gradient(
@@ -71,6 +81,12 @@ input[type="file"]{
   will-change: background-position;
   background-image: url(/assets/theme/img/song-header.png);
 }
+
+button {
+  background-color: rgb(59 130 246);
+  background-image: none;
+}
+
 
 @keyframes progress-bar-stripes {
   0% {
