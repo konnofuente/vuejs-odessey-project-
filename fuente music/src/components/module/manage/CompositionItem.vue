@@ -15,22 +15,28 @@
       </div>
 
       <div v-show="showForm">
-        <vee-form
-        :validationSchema="editSongSchema"
-        :initial-values="song"
-        @submit="edit"
+
+
+        <div
+          class="text-white text-center font-bold p-4 rounded mb-4"
+          v-if="show_alert"
+          :class="alert_varient"
         >
+          {{ alert_message }}
+        </div>
+
+        <vee-form :validationSchema="editSongSchema" :initial-values="song" @submit="edit">
           <div class="mb-3">
             <label class="inline-block mb-2">Song Title</label>
             <vee-field
-              name="songTitle"
+              name="modified_name"
               type="text"
               class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
               placeholder="Enter Song Title"
             />
-            <ErrorMessage class="text-red-600" name="songTitle" />
+            <ErrorMessage class="text-red-600" name="modified_name" />
           </div>
-          
+
           <div class="mb-3">
             <label class="inline-block mb-2">Genre</label>
             <vee-field
@@ -41,16 +47,14 @@
             />
             <ErrorMessage class="text-red-600" name="genre" />
           </div>
+          <button type="submit" class="py-1.5 px-3 rounded text-white bg-green-600">Submit</button>
           <button
-           
-            type="submit"
-            class="py-1.5 px-3 rounded text-white bg-green-600"
+            @click.prevent="showForm = !showForm"
+            type="button"
+            class="py-1.5 px-3 rounded text-white bg-gray-600"
           >
-            Submit
+            Go Back
           </button>
-          <button 
-          @click.prevent="showForm = !showForm"
-          type="button" class="py-1.5 px-3 rounded text-white bg-gray-600">Go Back</button>
         </vee-form>
       </div>
     </div>
@@ -60,6 +64,7 @@
 <script>
 import '../../../utils/validation'
 import { ErrorMessage } from 'vee-validate'
+import { songCollection } from '../../../includes/firebase'
 
 export default {
   name: 'CompositionItem',
@@ -67,27 +72,60 @@ export default {
     return {
       showForm: false,
       editSongSchema: {
-        songTitle: 'song_title',
-        genre: 'required|min:3'
-      }
+        modified_name: 'song_title',
+        genre: 'required|min:3',
+      },
+      in_submission: false,
+      show_alert: false,
+      alert_varient: 'bg-blue-500',
+      alert_message: 'please wait we are login you in '
     }
   },
 
-  methods:{
-    edit(){
-      console.log("song submitted")
+  props: {
+    song: {
+      type: Object,
+      required: true,
+    },
+    updateSong:{
+      type: Function,
+      required:true
+    },
+    index:{
+      type:Number,
+      required:true
+    }
+  },
+  methods: {
+    async edit(values) {
+
+      this.in_submission = true,
+      this.show_alert = true,
+      this.alert_varient = "bg-blue-500",
+      this.alert_message = "please wait we are Updating the song "
+
+      try {
+      
+        await songCollection.doc(this.song.docID).update(values)
+      } catch (error) {
+        console.log(error);
+          this.login_alert_varient = "bg-red-500",
+          this.login_alert_message = "an error occured"
+          console.log(error);
+          return
+      };
+      this.alert_varient = "bg-green-500",
+      this.alert_message = "Sucess you are login"
+      this.updateSong(this.index,values)
+      // window.location.reload()   
+
+      console.log('song submitted')
     }
   },
 
   components: {
     ErrorMessage
   },
-  props: {
-    song: {
-      type: Object,
-      required: true
-    }
-  }
 }
 </script>
 

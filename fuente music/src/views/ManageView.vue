@@ -16,7 +16,10 @@
         </div>
         <div class="p-6">
           <!-- Composition Items -->
-          <composition-item v-for="song  in songs " :key="song.docID" :song="song" ></composition-item>
+          <composition-item v-for="(song , i)  in songs " :key="song.docID" :song="song" 
+          :updateSong="updateSong"
+          :index="i"
+          ></composition-item>
   
           </div>
         </div>
@@ -45,6 +48,12 @@ export default {
         songs:[]
     }
   },
+  methods:{
+    updateSong(i , values)
+{
+  this.songs[i].modified_name =values.modified_name;
+  this.songs[i].genre =values.genre;
+}  },
 
     components:{
       UploadFile,
