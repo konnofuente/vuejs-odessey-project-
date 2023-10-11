@@ -112,7 +112,9 @@
 </template>
 
 <script>
-import {auth , userCollection } from "../../../includes/firebase"
+import { mapActions} from 'pinia';
+import useUserStore from '../../../stores/user'
+
 export default {
   name: 'RegisterForm',
   data() {
@@ -137,19 +139,23 @@ export default {
   },
 
   methods: {
+    
+    ...mapActions(useUserStore,{
+      createUser:'register'
+    }),
+
    async registerForm(val) {
       ;(this.reg_in_submission = true),
         (this.reg_show_alert = true),
         (this.reg_alert_varient = 'bg-blue-500'),
         (this.reg_alert_message = 'Wait we are creating your account ')
         
-        let userCred = null
+        // let userCred = null
         try {
         
           // eslint-disable-next-line no-unused-vars
-          userCred =  await auth.createUserWithEmailAndPassword(
-            val.email , val.password
-            ) 
+          await this.createUser(val)
+        
           } catch (error) {
 
           ;(this.reg_in_submission = false),
@@ -157,35 +163,17 @@ export default {
             (this.reg_alert_varient = 'bg-red-500'),
             (this.reg_alert_message = 'Unexpescted error please try letter')
             console.log(error);
-            return
-        };
-
-
-        try {
-        
-          await userCollection.add({
-            name:val.name,
-            email:val.email,
-            age:val.age,
-            country:val.country
-          })
-        } catch (error) {
-            console.log(error);
-            (this.reg_alert_varient = 'bg-red-500'),
-            (this.reg_alert_message = 'Unexpescted error please try letter')
-            console.log(error);
-            return
+ 
         };
         
 
 
-        ;(this.reg_in_submission = true),
-        (this.reg_show_alert = true),
-        (this.reg_alert_varient = 'bg-green-500'),
-        (this.reg_alert_message = 'Sucessful register ')
-        
+        this.reg_in_submission = true,
+        this.reg_show_alert = true,
+        this.reg_alert_varient = 'bg-green-500',
+        this.reg_alert_message = 'Sucessful register '
 
-      console.log(userCred)
+    
     }
   }
 }

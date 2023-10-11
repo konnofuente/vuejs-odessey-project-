@@ -9,16 +9,32 @@
             <!-- Primary Navigation -->
             <ul class="flex flex-row mt-1">
               <!-- Navigation Links -->
-              <li>
+              <li
+              v-if="!this.userLoggedIn"
+              >
                 <a 
                 class="px-2 text-white" 
                 href="#"
                 @click.prevent="toggleAuthModel"
                 >Login / Register</a>
               </li>
-              <li>
-                <a class="px-2 text-white" href="#">Manage</a>
-              </li>
+              <template
+              v-else
+              >
+                
+                <li
+                
+                >
+                  <a 
+                  class="px-2 text-white" 
+                  href="#"
+                  @click.prevent="signOut"
+                  >Logout</a>
+                </li>
+                <li>
+                  <a class="px-2 text-white" href="#">Manage</a>
+                </li>
+              </template>
             </ul>
           </div>
         </nav>
@@ -30,18 +46,24 @@
 <script >
 import {mapStores , mapWritableState} from 'pinia'
 import useModelStore from '../../../stores/model'
+import useUserStore from '../../../stores/user'
+import { mapActions } from 'pinia'
 
   export default{
     name:'AppHeader',
     computed:{
-      ...mapStores(useModelStore),
-      ...mapWritableState(useModelStore,["isOpen"])
+      ...mapStores(useModelStore , useUserStore),
+      ...mapWritableState(useModelStore,["isOpen"]),
+      ...mapWritableState(useUserStore,['userLoggedIn'])
     },
     methods:{
       toggleAuthModel(){
         this.modelStore.isOpen = !this.modelStore.isOpen
         console.log(this.modelStore.isOpen)
-      }
+      },
+
+      ...mapActions(useUserStore,['signOut']),
+
     }
   }
 </script>

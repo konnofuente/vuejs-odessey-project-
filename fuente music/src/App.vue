@@ -1,16 +1,22 @@
 <template>
 
   <div>
+
+    <head>
+      
+    </head>
  
     <body class="bg-gray-100 font-sans pb-24">
       <!-- Header -->
       <app-header></app-header>
 
       <!-- Introduction -->
-      <section class="mb-8 py-20 text-white text-center relative">
+      <section 
+      style="background-image: url(../public/assets/img/header.png)"
+      class="mb-8 py-20 text-black text-center relative">
         <div
-          class="absolute inset-0 w-full h-full bg-contain introduction-bg"
-          style="background-image: url(./assets/img/header.png)"
+          
+          class="  absolute inset-0 w-full h-full bg-contain introduction-bg"
         ></div>
         <div class="container mx-auto">
           <div class="text-white main-header-content">
@@ -287,6 +293,9 @@
 <script>
 import AppAuth from './components/module/auth/AppAuth.vue';
 import AppHeader from './components/module/global/AppHeader.vue';
+import { mapWritableState } from 'pinia';
+import useUserStore from './stores/user';
+import {auth} from './includes/firebase'
 export default {
   components: { AppHeader, AppAuth },
   name:'App',
@@ -294,6 +303,22 @@ export default {
     AppHeader,
     AppAuth
 
+  },
+  computed:{
+    ...mapWritableState(useUserStore,['userLoggedIn'])
+  },
+  created(){
+    if(auth.currentUser){
+      this.userLoggedIn = true
+    }  
   }
 }
 </script>
+
+<style scoped>
+  #cs-header {
+    height: 500px; /* Or whatever height you want */
+    background-image: url(../public/assets/img/header.png);
+    background-size: cover;
+}
+</style>
