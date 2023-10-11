@@ -73,8 +73,9 @@ import { mapActions } from 'pinia'
       ...mapActions(useUserStore,['signOut']),
       signout(){
         this.signOut()
-
-        this.$router.push({name:"home"})
+        this.$route.meta.requiresAuth 
+        ? this.$router.push({name:"home"})
+        :null
       },
 
 
