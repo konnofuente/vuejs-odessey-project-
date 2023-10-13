@@ -117,6 +117,7 @@ upload($event) {
             original_name : task.snapshot.ref.name,
             modified_name : task.snapshot.ref.name,
             genre:'',
+            comment:[],
             comment_count:0,
 
         } 

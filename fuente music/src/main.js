@@ -1,5 +1,4 @@
-import './assets/main.css'
-import './assets/base.css'
+
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -16,7 +15,6 @@ auth.onAuthStateChanged(()=>{
     if(!app){
         
         const app = createApp(App)
-        
         
         
         app.use(createPinia())
