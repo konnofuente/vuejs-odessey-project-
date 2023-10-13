@@ -7,7 +7,9 @@
     </div>
     <div class="container mx-auto flex items-center">
       <!-- Play/Pause Button -->
-      <button type="button" class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full
+      <button 
+      @click.prevent="newSong(song)"
+      type="button" class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full
         focus:outline-none">
         <i class="fas fa-play"></i>
       </button>
@@ -77,9 +79,11 @@
 
 <script>
 
-import { songCollection ,auth ,storage, commentCollection} from '../includes/firebase';
+import { mapActions } from 'pinia';
+import { songCollection ,auth , commentCollection} from '../includes/firebase';
 import '../utils/validation'
 import { ErrorMessage } from 'vee-validate';
+import usePlayerStore from "../stores/player"
 export default {
     name:'SongView',
 
@@ -94,6 +98,7 @@ export default {
     },
 
 methods:{
+    ...mapActions(usePlayerStore,["newSong"]),
     async addComment(){
         console.log(this.comment)
     
