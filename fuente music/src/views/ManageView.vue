@@ -4,7 +4,9 @@
     <div class="md:grid md:grid-cols-3 md:gap-4">
       
       <div class="col-span-1">
-        <upload-file></upload-file>
+        <upload-file
+        :addSong="addSong"
+        ></upload-file>
       </div>
 
       <div class="col-span-2">
@@ -19,6 +21,7 @@
           <composition-item v-for="(song , i)  in songs " :key="song.docID" :song="song" 
           :updateSong="updateSong"
           :index="i"
+          :removeSong = "removeSong"
           ></composition-item>
   
           </div>
@@ -53,7 +56,15 @@ export default {
 {
   this.songs[i].modified_name =values.modified_name;
   this.songs[i].genre =values.genre;
-}  },
+} ,
+
+  removeSong(i){
+    this.songs.splice(i,1)
+  },
+  addSong(song){
+    this.songs.push(song)
+  }
+},
 
     components:{
       UploadFile,

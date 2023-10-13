@@ -63,6 +63,12 @@ export default {
 
     }
   },
+  props :{
+    addSong:{
+      required:true,
+      type: Function
+    }
+  },
   methods:{
 
 upload($event) {
@@ -96,8 +102,8 @@ upload($event) {
     task.on('state_changed' , (snapshot)=>{
         const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         this.uploads[uploadIndex].current_progress = progress;
-    },
-    (error) =>{
+      },
+      (error) =>{
         this.uploads[uploadIndex].variant = 'bg-red-400';
         this.uploads[uploadIndex].icon = 'fas fa-times';
         this.uploads[uploadIndex].text_class = 'text-red-400'
@@ -118,6 +124,7 @@ upload($event) {
         song.url = await task.snapshot.ref.getDownloadURL();
         
         songCollection.add(song);
+        this.addSong(song)
         
         this.uploads[uploadIndex].variant = 'bg-green-400';
         this.uploads[uploadIndex].icon = 'fas fa-check';
