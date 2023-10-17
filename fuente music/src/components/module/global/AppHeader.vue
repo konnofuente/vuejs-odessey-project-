@@ -13,9 +13,9 @@
           <div class="flex flex-grow items-center">
             <!-- Primary Navigation -->
             <ul class="flex flex-row mt-1">
-              <li>
+              <!-- <li>
                 <router-link class="px-2 text-white" :to="{name:'about'}" >About</router-link>
-              </li>
+              </li> -->
               <!-- Navigation Links -->
               <li
               v-if="!this.userLoggedIn"
