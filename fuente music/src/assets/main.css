@@ -7,6 +7,10 @@ a:hover {
   color: #F59E0B;
   text-decoration: none;
 }
+.landing-bg{
+  background-image: url('../assets/img/header.png');
+  background-color: #349c54;
+}
 
 .text-orange {
   color: #F59E0B !important;
