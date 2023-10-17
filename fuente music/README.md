@@ -1,57 +1,50 @@
-# fuente music
 
-This template should help get you started developing with Vue 3 in Vite.
+# Fuente Music 🎶- Online Music Platform
 
-## Recommended IDE Setup
+## Overview
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Fuente Music is an online music platform built with Vue.js. The platform allows users to upload their songs and enables others to listen to them.
 
-## Customize configuration
+### View Project Life
+**Link** : [Fuente Music 🎶](musicapp.konnomelifuente.online)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Concepts Applied
 
-## Project Setup
+### 1. Form Validation
+- Enforced rules to prevent invalid data submission.
+- File: [Validation Utils](https://github.com/konnofuente/vuejs-odessey-project-/blob/fuente-music/fuente%20music/src/utils/validation.js)
 
-```sh
-npm install
-```
+### 2. Authentication
+- Firebase used for user authentication and registration.
+- Files: [AppAuth](https://github.com/konnofuente/vuejs-odessey-project-/blob/fuente-music/fuente%20music/src/components/module/auth/AppAuth.vue), [LoginForm](https://github.com/konnofuente/vuejs-odessey-project-/blob/fuente-music/fuente%20music/src/components/module/auth/LoginForm.vue), [RegisterForm](https://github.com/konnofuente/vuejs-odessey-project-/blob/fuente-music/fuente%20music/src/components/module/auth/RegisterForm.vue)
 
-### Compile and Hot-Reload for Development
+### 3. Routing
+- Vue Router library used for navigation and route guarding.
+- File: [Router Config](https://github.com/konnofuente/vuejs-odessey-project-/blob/fuente-music/fuente%20music/src/router/index.js)
 
-```sh
-npm run dev
-```
+### 4. Uploading Files
+- Firebase used for file storage with validation rules.
+- File: [UploadFile Component](https://github.com/konnofuente/vuejs-odessey-project-/blob/fuente-music/fuente%20music/src/components/module/manage/UploadFile.vue)
 
-### Compile and Minify for Production
+### 5. Playing Music
+- Implemented audio player with basic controls.
+- File: [PlayerView Component](https://github.com/konnofuente/vuejs-odessey-project-/blob/fuente-music/fuente%20music/src/components/module/players/PlayerView.vue)
 
-```sh
-npm run build
-```
+### 6. Directives
+- Custom directives used for extending element properties and methods.
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+## Architecture and Code Quality
 
-```sh
-npm run test:unit
-```
+- **State Management**: Vuex used for state management.
+- **Clean Code**: The project is structured into modules and components for better maintainability.
+- **Reusable Components**: Components like `SongItem`, `CompositionItem`, and `UploadFile` are designed to be reusable.
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+## Setup
 
-```sh
-npm run test:e2e:dev
-```
+1. Clone the repository.
+2. Run `npm install`.
+3. Run `npm run serve` to start the development server.
 
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
-npm run test:e2e
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+## Author
+- Name: konomelifuente@gmail.com
+- Portfolio: konnomelifuente.online
