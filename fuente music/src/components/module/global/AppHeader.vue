@@ -44,6 +44,14 @@
                 </li>
               </template>
             </ul>
+
+            <ul class="ml-auto">
+              <li>
+                <a href="" class="px-2 text-white" @click.prevent="changeLocale">
+                {{ currentLocale }}
+                </a>
+              </li>
+            </ul>
           </div>
         </nav>
       </header>
@@ -62,9 +70,16 @@ import { mapActions } from 'pinia'
     computed:{
       ...mapStores(useModelStore , useUserStore),
       ...mapWritableState(useModelStore,["isOpen"]),
-      ...mapWritableState(useUserStore,['userLoggedIn'])
+      ...mapWritableState(useUserStore,['userLoggedIn']),
+      currentLocale(){
+        return this.$i18n.locale === "fr"? "French" : "English"
+      }
     },
     methods:{
+
+      changeLocale(){
+        this.$i18n.locale = this.$i18n.locale === "fr" ? "en" : "fr";
+      },
       toggleAuthModel(){
         this.modelStore.isOpen = !this.modelStore.isOpen
         console.log(this.modelStore.isOpen)

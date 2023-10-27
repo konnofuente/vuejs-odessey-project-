@@ -2,7 +2,7 @@ export default{
     
     beforeMount(el , binding) {
 
-        let iconClass=`fa fa-${binding.value}   text-green-400 text-xl`
+        let iconClass=`fa fa-${binding.value}  float-right text-green-400 text-xl`
 
         if(binding.value.right){
             iconClass += 'float-right'
