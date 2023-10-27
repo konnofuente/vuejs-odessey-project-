@@ -15,8 +15,10 @@
               </div>
 
               <div class="text-gray-600 text-lg">
-                <span class="comments">
-                  <i class="fa fa-comments text-gray-600"></i>
+                <span class="comments"
+                v-icon="'comments'"
+                >
+                  <!-- <i class="fa fa-comments text-gray-600"></i> -->
                   15
                 </span>
               </div>
