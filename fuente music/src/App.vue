@@ -9,9 +9,7 @@
     <body class="bg-gray-100 font-sans pb-24">
       <!-- Header -->
       <app-header></app-header>
-
       <router-view></router-view>
-
       <!-- Player -->
       <player-view></player-view>
       <!-- Auth Modal -->

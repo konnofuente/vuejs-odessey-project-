@@ -16,6 +16,18 @@ module.exports = {
       'extends': [
         'plugin:cypress/recommended'
       ]
+    },
+    {
+      files:["src/components/_tests_/**.spec.js"],
+
+      globals:{
+        test:"readonly",
+        describe:"readonly",
+        expect:"readonly",
+        vi:"readonly",
+        beforeEach:"readonly",
+        it:"readonly",
+      }
     }
   ],
   parserOptions: {

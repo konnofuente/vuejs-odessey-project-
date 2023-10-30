@@ -4,6 +4,8 @@
           <ol id="playlist">
             <li
               class="flex justify-between items-center p-3 pl-6 cursor-pointer transition duration-300 hover:bg-gray-50"
+              :id="`song-id-${song.docID}`"
+              :class="'song-id-it'"
             >
               <div>
 
@@ -38,7 +40,8 @@ export default {
     name:"SongItem",
     props:{
         song:{
-            required:true
+          required:true,
+          type:Object,
         }
     }
 

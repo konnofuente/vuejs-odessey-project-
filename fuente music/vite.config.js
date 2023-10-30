@@ -1,12 +1,39 @@
 import { fileURLToPath, URL } from 'node:url'
+import {VitePWA} from 'vite-plugin-pwa'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+
+  test:{
+    globals:true,
+  },
   plugins: [
-    vue(),
+    vue(),VitePWA(
+      {registerType:"autoUpdate",
+      devOptions:{
+        enabled: true
+      },
+      manifest:{
+        name:"Music App",
+        // theme_color: #ffff,
+        icons:[
+          {
+            src: "./src/assets/img/logo2.png",
+            sizes: "192 * 192",
+            type:"image/png"
+          }
+
+        ]
+      },
+
+      workbox:{
+        globPatterns:["**/*.{js,css,html,png,jpg}"]
+      }
+    }
+    )
   ],
   resolve: {
     alias: {
